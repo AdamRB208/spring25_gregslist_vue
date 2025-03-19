@@ -10,24 +10,20 @@ defineProps({
 
 
 <template>
-  house listing
-  <div>
-    <p>{{ houseProp.id }}</p>
-    <div class="row shadow-lg mb-4 house-border">
-      <div class="col-md-5 px-0">
-        <img :src="houseProp.imgUrl" :alt="`A picture of a ${houseProp.year} ${houseProp.description} `">
-      </div>
-      <div class="col-md-7">
-        <div class="p-3">
-          <div class="d-flex justify-content-between">
-            <p class="fs-3">{{ houseProp.year }} {{ houseProp.bedrooms }} {{ houseProp.bathrooms }} {{ houseProp.levels
-            }}</p>
-            <small>{{ houseProp.createdAt.toLocaleDateString() }}</small>
-          </div>
-          <p class="fs-3">{{ '$' + houseProp.price.toLocaleString() }}</p>
-          <p v-if="houseProp.description">{{ houseProp.description }}</p>
-          <p v-else>A lovely house</p>
+  <div class="row shadow-lg mb-4 house-border">
+    <div class="col-md-5 px-0">
+      <img :src="houseProp.imgUrl" :alt="`A picture of a ${houseProp.year} ${houseProp.description} `">
+    </div>
+    <div class="col-md-7">
+      <div class="p-3">
+        <div class="d-flex justify-content-between">
+          <p class="fs-3">{{ houseProp.year }} {{ houseProp.bedrooms }} {{ houseProp.bathrooms }} {{ houseProp.levels
+          }}</p>
+          <small>{{ houseProp.createdAt.toLocaleDateString() }}</small>
         </div>
+        <p class="fs-3">{{ '$' + houseProp.price.toLocaleString() }}</p>
+        <p v-if="houseProp.description">{{ houseProp.description }}</p>
+        <p v-else>A lovely house</p>
       </div>
     </div>
   </div>

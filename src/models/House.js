@@ -10,6 +10,6 @@ export class House {
     this.price = data.price
     this.description = data.description
     this.creatorId = data.creatorId
-    this.createdAt = data.createdAt
+    this.createdAt = new Date(data.createdAt)
   }
 }

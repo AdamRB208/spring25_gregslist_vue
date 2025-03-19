@@ -1,10 +1,15 @@
 <script setup>
+import { AppState } from '@/AppState.js';
+import { Account } from '@/models/Account.js';
 import { House } from '@/models/House.js';
+import { computed } from 'vue';
 
 
 defineProps({
   houseProp: { type: House, required: true }
 })
+
+const account = computed(() => AppState.account)
 
 </script>
 
@@ -24,6 +29,9 @@ defineProps({
         <p class="fs-3">{{ '$' + houseProp.price.toLocaleString() }}</p>
         <p v-if="houseProp.description">{{ houseProp.description }}</p>
         <p v-else>A lovely house</p>
+        <div>
+          <!-- {{ houseProp.creatorId }} -->
+        </div>
       </div>
     </div>
   </div>

@@ -6,8 +6,8 @@ import { ref } from 'vue';
 
 
 const editableHouseData = ref({
-  bedroom: 0,
-  bathroom: 0,
+  bedrooms: 0,
+  bathrooms: 0,
   levels: 0,
   year: 1820,
   imgUrl: '',
@@ -31,12 +31,12 @@ async function createHouse() {
   <form @submit.prevent="createHouse()">
     <div class="mb-3">
       <label for="bedrooms">Bedrooms: 0</label>
-      <input v-model="editableHouseData.bedroom" id="bedrooms" name="bedrooms" type="number" required min="1" max="10"
+      <input v-model="editableHouseData.bedrooms" id="bedrooms" name="bedrooms" type="number" required min="1" max="10"
         placeholder="0">
     </div>
     <div class="mb-3">
       <label for="bathrooms">Bathrooms: 0</label>
-      <input v-model="editableHouseData.bathroom" id="bathrooms" name="bathrooms" type="number" required min="1"
+      <input v-model="editableHouseData.bathrooms" id="bathrooms" name="bathrooms" type="number" required min="1"
         max="10" placeholder="0">
     </div>
     <div class="mb-3">
@@ -65,18 +65,18 @@ async function createHouse() {
         class="w-100" placeholder="Description of the house..." maxlength="500"></textarea>
     </div>
     <!-- <div class="mb-3">
-                <label for="creatorId">creatorId</label>
-                <input id="creatorId" name="creatorId" type="">
-              </div>
-              <div class="mb-3">
-                <label for="id">id</label>
-                <input id="id" name="id" type="" >
-              </div> -->
+      <label for="creatorId">creatorId</label>
+      <input id="creatorId" name="creatorId" type="">
+    </div>
+    <div class="mb-3">
+      <label for="id">id</label>
+      <input id="id" name="id" type="">
+    </div> -->
     <div class="text-end">
-      <button class="btn btn-outline-danger me-2" type="reset">
+      <!-- <button class="btn btn-outline-danger me-2" type="reset">
         Reset Form
-      </button>
-      <button class="btn btn-outline-dark" type="submit">
+      </button> -->
+      <button class="btn btn-outline-success" type="submit">
         Submit
       </button>
     </div>

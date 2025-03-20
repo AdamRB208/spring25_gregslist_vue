@@ -5,7 +5,7 @@ import { Job } from "@/models/Jobs.js"
 
 class JobsService {
   async getJobs() {
-    const response = await api.get('api/cars')
+    const response = await api.get('api/jobs')
     logger.log('Got Jobs!', response.data)
     const jobs = response.data.map(pojo => new Job(pojo))
     AppState.jobs = jobs

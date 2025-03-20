@@ -1,9 +1,11 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { jobsService } from '@/services/JobsService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 
+const jobs = computed(() => AppState.jobs)
 
 onMounted(() => {
   getJobs()
@@ -21,7 +23,7 @@ async function getJobs() {
 
 
 <template>
-  Jobs Page!
+  {{ jobs }}
 </template>
 
 

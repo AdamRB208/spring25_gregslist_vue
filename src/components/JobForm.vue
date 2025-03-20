@@ -19,6 +19,15 @@ async function createJob() {
   try {
     const jobData = editableJobData.value
     await jobsService.createJob(jobData)
+    editableJobData.value = {
+      company: '',
+      jobTitle: '',
+      hours: 0,
+      rate: 0,
+      description: '',
+      creatorId: '',
+      id: '',
+    }
   } catch (error) {
     Pop.error(error, 'Could not create job')
     logger.error('COULD NOT CREATE JOB', error)

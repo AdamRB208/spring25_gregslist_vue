@@ -9,6 +9,8 @@ import JobForm from '@/components/JobForm.vue';
 
 const jobs = computed(() => AppState.jobs)
 
+const account = computed(() => AppState.account)
+
 onMounted(() => {
   getJobs()
 })
@@ -34,7 +36,7 @@ async function getJobs() {
       </div>
     </div>
   </section>
-  <section class="container">
+  <section v-if="account" class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
         <JobForm />
@@ -47,6 +49,9 @@ async function getJobs() {
         </div>
       </div>
     </div>
+  </section>
+  <section v-else>
+    <h2 class="text-center">Please log in to list a job!</h2>
   </section>
   <section class="container">
     <div class="row">

@@ -9,7 +9,7 @@ defineProps({
   houseProp: { type: House, required: true }
 })
 
-const account = computed(() => AppState.account)
+
 
 </script>
 
@@ -22,12 +22,14 @@ const account = computed(() => AppState.account)
     <div class="col-md-7">
       <div class="p-3">
         <div class="d-flex justify-content-between">
-          <p class="fs-3">{{ houseProp.year }} {{ houseProp.bedrooms }} {{ houseProp.bathrooms }} {{ houseProp.levels
-          }}</p>
+          <p class="fs-2">Year: {{ houseProp.year }} Bedrooms: {{ houseProp.bedrooms }} Bathrooms: {{
+            houseProp.bathrooms }} Levels: {{
+              houseProp.levels
+            }}</p>
           <small>{{ houseProp.createdAt.toLocaleDateString() }}</small>
         </div>
-        <p class="fs-3">{{ '$' + houseProp.price.toLocaleString() }}</p>
-        <p v-if="houseProp.description">{{ houseProp.description }}</p>
+        <p class="fs-3">Price: {{ '$' + houseProp.price.toLocaleString() }}</p>
+        <p Description: v-if="houseProp.description">{{ houseProp.description }}</p>
         <p v-else>A lovely house</p>
         <div>
           <!-- {{ houseProp.creatorId }} -->

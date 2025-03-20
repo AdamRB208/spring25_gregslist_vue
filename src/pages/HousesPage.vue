@@ -10,6 +10,8 @@ import { computed, onMounted } from 'vue';
 
 const houses = computed(() => AppState.houses)
 
+const account = computed(() => AppState.account)
+
 onMounted(() => {
   getHouses()
 })
@@ -43,7 +45,7 @@ async function getHouses() {
       </div>
     </div>
   </section>
-  <section class="container">
+  <section v-if="account" class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
         <HouseForm />
@@ -56,6 +58,9 @@ async function getHouses() {
         </div>
       </div>
     </div>
+  </section>
+  <section v-else>
+    <h2 class="text-center">Please log in to list a house!</h2>
   </section>
   <section class="container">
     <div class="row">

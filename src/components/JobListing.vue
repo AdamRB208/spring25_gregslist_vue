@@ -1,12 +1,17 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { Job } from '@/models/Jobs.js';
 import { jobsService } from '@/services/JobsService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
+import { computed } from 'vue';
+import { Account } from '@/models/Account.js';
 
 defineProps({
   jobProp: { type: Job, required: true }
 })
+
+const account = computed(() => AppState.account)
 
 async function deleteJob(jobId) {
   try {
@@ -41,7 +46,8 @@ async function deleteJob(jobId) {
             </div>
           </div>
           <div class="text-end mb-1">
-            <button @click="deleteJob(jobProp.id)" class="btn btn-outline-danger">
+            <button v-if="jobProp.creatorId == account?.id" @click="deleteJob(jobProp.id)"
+              class="btn btn-outline-danger" type="button">
               Delete
             </button>
           </div>

@@ -21,6 +21,9 @@ class JobsService {
   async deleteJob(jobId) {
     const response = await api.delete(`api/jobs/${jobId}`)
     logger.log('deleted job!', response.data)
+    const jobs = AppState.cars
+    const jobIndex = jobs.findIndex(job => job.id == jobId)
+    jobs.splice(jobIndex, 1)
   }
 
 }

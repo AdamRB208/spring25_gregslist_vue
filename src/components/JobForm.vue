@@ -37,7 +37,7 @@ async function createJob() {
 
 
 <template>
-  <section class="contioner">
+  <section class="container">
     <div class="row">
       <div class="col-6">
         <form @submit.prevent="createJob()">

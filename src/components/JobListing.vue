@@ -1,9 +1,25 @@
 <script setup>
 import { Job } from '@/models/Jobs.js';
+import { jobsService } from '@/services/JobsService.js';
+import { logger } from '@/utils/Logger.js';
+import { Pop } from '@/utils/Pop.js';
 
 defineProps({
   jobProp: { type: Job, required: true }
 })
+
+async function deleteJob(jobId) {
+  try {
+    const confirmed = await Pop.confirm('Are you sure you want to delete this car?', 'It will be gone forever!', 'Yes I am sure', "I've changed my mind")
+    if (!confirmed) {
+      return
+    }
+    await jobsService.deleteJob(jobId)
+  } catch (error) {
+    Pop.error(error, 'Could not delete job')
+    logger.error('COULD NOT DELETE JOB', error)
+  }
+}
 
 </script>
 
@@ -25,7 +41,7 @@ defineProps({
             </div>
           </div>
           <div class="text-end mb-1">
-            <button class="btn btn-outline-danger">
+            <button @click="deleteJob(jobProp.id)" class="btn btn-outline-danger">
               Delete
             </button>
           </div>

@@ -18,6 +18,11 @@ class JobsService {
     AppState.jobs.push(job)
   }
 
+  async deleteJob(jobId) {
+    const response = await api.delete(`api/jobs/${jobId}`)
+    logger.log('deleted job!', response.data)
+  }
+
 }
 
 export const jobsService = new JobsService()

@@ -4,6 +4,7 @@ import { jobsService } from '@/services/JobsService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted } from 'vue';
+import JobListing from '@/components/JobListing.vue';
 
 const jobs = computed(() => AppState.jobs)
 
@@ -23,7 +24,22 @@ async function getJobs() {
 
 
 <template>
-  {{ jobs }}
+  <section class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center">
+          <h1 class="display-3">Jobs</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="row">
+      <div v-for="job in jobs" :key="job.id" class="col-12">
+        <JobListing :jobProp="job" />
+      </div>
+    </div>
+  </section>
 </template>
 
 
